@@ -4,10 +4,10 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 
 class Canvas extends JPanel {
-    static Car car;
-    static GravityPoint gp;
-    static GravityWall gw;
-    static MouseEvent mouse;
+    protected static Car car;
+    protected static GravityPoint gp;
+    protected static GravityWall gw;
+    protected static MouseEvent mouse;
 
     Canvas() {
         super();
@@ -21,6 +21,16 @@ class Canvas extends JPanel {
     public void paintComponent(Graphics g) {
         Graphics2D g2d = (Graphics2D)g;
 
+        update();
+        display(g2d);
+    }
+
+    // update all objects
+    public void update() {
+    }
+
+    // show all objects
+    public void display(Graphics2D g2d) {
         gp.show(g2d);
         gw.show(g2d);
         car.show(g2d);
@@ -28,8 +38,5 @@ class Canvas extends JPanel {
 
     public void setMouseEvent(MouseEvent event) {
         mouse = event;
-    }
-
-    public void update() {
     }
 }
