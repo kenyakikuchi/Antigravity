@@ -1,14 +1,13 @@
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseAdapter;
 
 // this file is an otamesi program of anti-gravity moving
 public class Antigravity extends JFrame implements ActionListener {
@@ -22,7 +21,7 @@ public class Antigravity extends JFrame implements ActionListener {
     // instance variable
     static Antigravity me;
     static Timer timer;
-    static Car car;
+    static Canvas canvas;
 
     // Constructor
     Antigravity() {
@@ -31,8 +30,8 @@ public class Antigravity extends JFrame implements ActionListener {
         timer = new Timer(1000 / FRAME_PER_SECOND, this);
         timer.start();
 
-        car = new Car();
-        add(car);
+        canvas = new Canvas();
+        add(canvas);
 
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
@@ -51,8 +50,7 @@ public class Antigravity extends JFrame implements ActionListener {
 
     // this function is called FRAME_PER_SECOND times per second
     public void actionPerformed(ActionEvent e) {
-        //car.move(1);
-        car.repaint();
+        canvas.repaint();
     }
 
     // assign mouse event
@@ -60,35 +58,28 @@ public class Antigravity extends JFrame implements ActionListener {
         antigravity.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
-                //System.out.printf("mouse entered at (%d, %d)\n", e.getX(), e.getY());
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                //System.out.printf("mouse exited at (%d, %d)\n", e.getX(), e.getY());
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
-                //System.out.printf("mouse clicked at (%d, %d)\n", e.getX(), e.getY());
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                //System.out.printf("mouse released at (%d, %d)\n", e.getX(), e.getY());
             }
         });
 
         antigravity.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
-                //System.out.printf("mouse dragged at (%d, %d)\n", e.getX(), e.getY());
             }
 
             @Override
             public void mouseMoved(MouseEvent e) {
-                //System.out.printf("mouse is at (%d, %d)\n", e.getX(), e.getY());
-                car.setLocation((double)e.getX(), (double)e.getY() - WINDOW_DEPTH);
             }
         });
     }

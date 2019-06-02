@@ -1,9 +1,8 @@
-import java.awt.Graphics;
 import java.awt.Color;
-import javax.swing.JPanel;
+import java.awt.Graphics;
 
 // movable object
-public class MovableObject extends JPanel{
+public class MovableObject {
     public boolean visible;
     public double[] coordinate;
     public double[] velocity;
@@ -27,13 +26,24 @@ public class MovableObject extends JPanel{
         velocity[1] = vy;
     }
 
+    public void setColor(Color c) {
+        color = c;
+    }
+
+    public void setVisible(boolean flag) {
+        visible = flag;
+    }
+
     public void move(int dt) {
         coordinate[0] += dt * velocity[0];
         coordinate[1] += dt * velocity[1];
     }
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void show(Graphics g) {
+        if (visible == false) {
+            return;
+        }
+
+        g.setColor(color);
     }
 }
