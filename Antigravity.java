@@ -50,6 +50,7 @@ public class Antigravity extends JFrame implements ActionListener {
 
     // this function is called FRAME_PER_SECOND times per second
     public void actionPerformed(ActionEvent e) {
+        canvas.update();
         canvas.repaint();
     }
 
@@ -58,28 +59,34 @@ public class Antigravity extends JFrame implements ActionListener {
         antigravity.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseEntered(MouseEvent e) {
+                canvas.setMouseEvent(e);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
+                canvas.setMouseEvent(e);
             }
 
             @Override
             public void mousePressed(MouseEvent e) {
+                canvas.setMouseEvent(e);
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
+                canvas.setMouseEvent(e);
             }
         });
 
         antigravity.addMouseMotionListener(new MouseAdapter() {
             @Override
             public void mouseDragged(MouseEvent e) {
+                canvas.setMouseEvent(e);
             }
 
             @Override
             public void mouseMoved(MouseEvent e) {
+                canvas.setMouseEvent(e);
             }
         });
     }
