@@ -3,7 +3,7 @@ import java.awt.Graphics2D;
 
 public class Rectangle extends MovableObject {
     // constant
-    private static final int[] defaultSize = {100, 150};
+    private static final int[] defaultSize = {50, 50};
 
     // variable
     protected int size[];
@@ -48,7 +48,8 @@ public class Rectangle extends MovableObject {
         g2d.fillRect(
             (int)(coordinate[0] - size[0] / 2),
             (int)(coordinate[1] - size[1] / 2),
-            (int)size[0], (int)size[1]
+            (int)size[0],
+            (int)size[1]
         );
     }
 

@@ -5,6 +5,10 @@ import java.lang.Math;
 
 // movable object
 public class MovableObject {
+    // constant
+    public static final double MAX_SPEED = 7;
+
+    // variables
     protected boolean visible;
     protected double[] coordinate;
     protected double[] velocity;
@@ -78,6 +82,11 @@ public class MovableObject {
     }
 
     public void setVelocity(double vx, double vy) {
+        velocity[0] = vx;
+        velocity[1] = vy;
+    }
+
+    public void setVelocity(int vx, int vy) {
         velocity[0] = vx;
         velocity[1] = vy;
     }

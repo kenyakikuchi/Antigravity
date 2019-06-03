@@ -7,16 +7,23 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseMotionListener;
+import java.awt.GraphicsEnvironment;
+import java.awt.GraphicsDevice;
+import java.lang.System;
+
 
 // this file is an otamesi program of anti-gravity moving
 public class Antigravity extends JFrame implements ActionListener {
     // constants
-    public static final int WIDTH = 640;
-    public static final int HEIGHT = 480;
+    public static final int WIDTH = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getWidth();
+    public static final int HEIGHT = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDisplayMode().getHeight();
     public static final int FRAME_PER_SECOND = 60;
     public static final String TITLE = "Antigravity";
     public static final int WINDOW_DEPTH = 25;
+    public static final int TIMER_COUNT = 1;
 
     // instance variable
     static Antigravity me;
@@ -27,6 +34,7 @@ public class Antigravity extends JFrame implements ActionListener {
     Antigravity() {
         super(TITLE);
 
+
         timer = new Timer(1000 / FRAME_PER_SECOND, this);
         timer.start();
 
@@ -36,7 +44,8 @@ public class Antigravity extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(WIDTH, HEIGHT);
         setLocationRelativeTo(null);
-        setResizable(false);
+        //setResizable(false);
+        setUndecorated(true);
         setVisible(true);
     }
 
@@ -44,14 +53,30 @@ public class Antigravity extends JFrame implements ActionListener {
     public static void main(String[] args) {
         me = new Antigravity();
 
-        // assign mouse event
+        // assign events
         assignMouseEvent(me);
+        assignKeyEvent(me);
+
+        // change fullscreen mode
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        gd.setFullScreenWindow(me);
     }
 
     // this function is called FRAME_PER_SECOND times per second
     public void actionPerformed(ActionEvent e) {
-        canvas.update();
+        canvas.update(TIMER_COUNT);
         canvas.repaint();
+    }
+
+    // assign key event
+    public static void assignKeyEvent(Antigravity antigravity) {
+        antigravity.addKeyListener(new KeyAdapter() {
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyChar() == 0x1b) {
+                    System.exit(0);
+                }
+            }
+       });
     }
 
     // assign mouse event

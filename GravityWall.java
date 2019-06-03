@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 public class GravityWall extends Rectangle {
     // constants
     private static final double defalutPower = 1;
-    private static final double defalutHitDistance = 200;
+    private static final double defalutHitDistance = 100;
 
     // variables
     protected double power;
@@ -40,7 +40,7 @@ public class GravityWall extends Rectangle {
     public void init() {
         power = defalutPower;
         hitDistance = defalutHitDistance;
-        setHitColor(Colors.YELLOW);
+        setHitColor(Colors.BLUE);
     }
 
     @Override
@@ -53,7 +53,8 @@ public class GravityWall extends Rectangle {
         g2d.fillRect(
             (int)(coordinate[0] - (size[0] + hitDistance) / 2),
             (int)(coordinate[1] - (size[1] + hitDistance) / 2),
-            (int)(size[0] + hitDistance), (int)(size[1] + hitDistance)
+            (int)(size[0] + hitDistance),
+            (int)(size[1] + hitDistance)
         );
 
         super.show(g2d);

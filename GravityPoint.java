@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 public class GravityPoint extends Circle {
     // constants
     private static final double defalutPower = 1;
+    private static final int defaultRadius = 200;
     private static final int defalutCoreRadius = 20;
     private static final Color defalutCoreColor = Colors.BLACK;
 
@@ -40,7 +41,7 @@ public class GravityPoint extends Circle {
 
     public void init() {
         setColor(Colors.GREEN);
-        setRadius(200);
+        setRadius(defaultRadius);
 
         setPower(defalutPower);
         setCoreRadius(defalutCoreRadius);
