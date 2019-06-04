@@ -14,7 +14,6 @@ import java.awt.GraphicsEnvironment;
 import java.awt.GraphicsDevice;
 import java.lang.System;
 
-
 // this file is an otamesi program of anti-gravity moving
 public class Antigravity extends JFrame implements ActionListener {
     // constants

@@ -39,7 +39,7 @@ class Canvas extends JPanel {
             {10, 5}
         };
         for (int i = 0; i < pos.length; i++) {
-            gps[i] = new GravityPoint(WIDTH * pos[i][0] / 11, HEIGHT * pos[i][1] / 6 - 15);
+            gps[i] = new GravityPoint(WIDTH * pos[i][0] / 11, HEIGHT * pos[i][1] / 6);
             gps[i].setRadius(300);
         }
         gws = new GravityWall[1];
@@ -66,7 +66,7 @@ class Canvas extends JPanel {
                 // when the left mouse button was clicked
                 if (isClicked == false) {
                     isClicked = true;
-                    car.setDestination(mouse.getX(), mouse.getY() - 25);
+                    car.setDestination(mouse.getX(), mouse.getY());
                     car.setDestFlag(true);
                 }
             } else {
